@@ -1,28 +1,33 @@
 import {Component} from 'react'
-
 import './index.css'
 
 class Welcome extends Component {
-  state = {count: 'Subscribed'}
+  state = {isSubscribe: true}
 
-  onClick = () => {
-    this.setState(prevState => {
-      console.log(`Previous State value ${prevState.count}`)
-      return {count: `${prevState.count}`}
-    })
+  onLink = () => {
+    const {isSubscribe} = this.state
+    
+    if (isSubscribe === true) {
+      return (
+        <button className="btn" type="button">
+          Subscribed
+        </button>
+      )
+    }
+    return (
+      <button className="btn" type="button">
+        Subscribe
+      </button>
+    )
   }
 
   render() {
-    const {count} = this.state
     return (
       <div className="container">
         <h1 className="heading">Welcome</h1>
-        <p className="para">Thank you! Happy Learning</p>
-        <button className="btn" type="button" onClick={this.onClick}>
-          {count}
-        </button>
-        <button className="btn" type="button">
-          Subscribed
+        <p className="para">Thank you Happy Learning!</p>
+        <button className="btn" onClick={this.onLink} type="button">
+          Subscribe
         </button>
       </div>
     )
